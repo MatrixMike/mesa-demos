@@ -3,25 +3,31 @@
 
 # Helper for the getprocaddress.c test.
 
-
-import sys, getopt, re, os
-argc = len(sys.argv)
-if (argc):
-	glapi_xml_path = sys.argv[1]
-else:
-	glapi_xml_path = "../../src/mapi/glapi/gen/"
-
-sys.path.append(glapi_xml_path)
-import gl_XML
-import license
+import argparse
+import sys,re, os
 
 
+if __name__ == '__main__':
+        parser = argparse.ArgumentParser()
+        parser.add_argument('mesa_path')
+        parser.add_argument('c_file')
+        parser.add_argument('-f', '--file_name')
+        args = parser.parse_args()
 
-def FindTestFunctions():
+        if not args.file_name:
+            args.file_name = os.path.join(args.mesa_path, "gl_API.xml")
+
+        sys.path.insert(0, args.mesa_path)
+        import gl_XML
+        import license
+
+
+
+def FindTestFunctions(c_file):
 	"""Scan getprocaddress.c for lines that start with "test_" to find
 	extension function tests.  Return a list of names found."""
 	functions = []
-	f = open("getprocaddress.c")
+	f = open(c_file)
 	if not f:
 		return functions
 	for line in f.readlines():
@@ -34,7 +40,7 @@ def FindTestFunctions():
 
 
 class PrintExports(gl_XML.gl_print_base):
-	def __init__(self):
+	def __init__(self, c_file):
 		gl_XML.gl_print_base.__init__(self)
 
 		self.name = "getprocaddress.py (from Mesa)"
@@ -42,7 +48,7 @@ class PrintExports(gl_XML.gl_print_base):
 """Copyright (C) 1999-2001  Brian Paul   All Rights Reserved.
 (C) Copyright IBM Corporation 2004""", "BRIAN PAUL, IBM")
 
-		self.tests = FindTestFunctions()
+		self.tests = FindTestFunctions(c_file)
 		self.prevCategory = ""
 		return
 
@@ -82,19 +88,8 @@ static struct name_test_pair functions[] = {"""
 
 
 if __name__ == '__main__':
-	file_name = os.path.join(glapi_xml_path, "gl_API.xml")
-    
-	try:
-		(args, trail) = getopt.getopt(sys.argv[1:], "f:")
-	except Exception,e:
-		show_usage()
+	printer = PrintExports(args.c_file)
 
-	for (arg,val) in args:
-		if arg == "-f":
-			file_name = val
-
-	printer = PrintExports()
-
-	api = gl_XML.parse_GL_API( file_name, gl_XML.gl_item_factory() )
+	api = gl_XML.parse_GL_API( args.file_name, gl_XML.gl_item_factory() )
 
 	printer.Print( api )
