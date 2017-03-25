@@ -35,15 +35,12 @@ dep_thread = []
 dep_wayland = []
 dep_x11 = []
 dep_xext = []
-dep_glut = dependency('freeglut')
+dep_glut = dependency('freeglut', required : false)
 if dep_glut.found()
   add_project_arguments('-DHAVE_FREEGLUT', language : 'c')
   add_project_arguments('-DHAVE_FREEGLUT', language : 'cpp')
 else
-  _glut = cc.find_library('glut', required: true)
-  dep_glut = declare_dependency(
-    link_with : _glut,
-  )
+  dep_glut = cc.find_library('glut', required : true)
 endif
 
 if host_system.startswith('linux')
