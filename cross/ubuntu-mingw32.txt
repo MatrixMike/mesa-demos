@@ -1,0 +1,32 @@
+[binaries]
+c = 'i686-w64-mingw32-gcc'
+cpp = 'i686-w64-mingw32-g++'
+ar = 'i686-w64-mingw32-ar'
+strip = 'i686-w64-mingw32-strip'
+
+# XXX: We don't want to rely on pkgconfig for Windows
+#pkgconfig = '...'
+
+# XXX: We don't want to rely on WINE
+#exe_wrapper = 'wine' # A command used to run generated executables.
+
+[properties]
+sizeof_int = 4
+sizeof_wchar_t = 4
+sizeof_void* = 4
+
+alignment_char = 1
+alignment_void* = 4
+alignment_double = 4
+
+has_function_printf = true
+
+root = '/usr/i686-w64-mingw32'
+c_args = []
+c_link_args = []
+
+[host_machine]
+system = 'windows'
+cpu_family = 'x86'
+cpu = 'i686'
+endian = 'little'
