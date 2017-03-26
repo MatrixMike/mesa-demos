@@ -24,11 +24,11 @@ host_system = host_machine.system()
 cc = meson.get_compiler('c')
 
 dep_egl = []
-dep_gl = dependency('gl')
+dep_gl = []
 dep_gles1 = []
 dep_gles2 = []
 dep_glew = dependency('glew', version : '>=1.5.4')
-dep_glu = dependency('glu')
+dep_glu = []
 dep_m = []
 dep_osmesa = []
 dep_thread = []
@@ -41,6 +41,14 @@ if dep_glut.found()
   add_project_arguments('-DHAVE_FREEGLUT', language : 'cpp')
 else
   dep_glut = cc.find_library('glut', required : true)
+endif
+
+if host_system == 'windows'
+  dep_gl = cc.find_library('opengl32')
+  dep_glu = cc.find_library('glu32')
+else
+  dep_gl = dependency('gl')
+  dep_glu = dependency('glu')
 endif
 
 if host_system.startswith('linux')
