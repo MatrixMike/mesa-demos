@@ -29,7 +29,9 @@ subdir('fpglsl')
 subdir('glsl')
 subdir('gs')
 subdir('objviewer')
-subdir('osdemos')
+if with_osmesa
+  subdir('osdemos')
+endif
 subdir('perf')
 if with_rbug
   subdir('rbug')
