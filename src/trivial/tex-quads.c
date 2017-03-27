@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #define NUM_TEX 10
@@ -133,7 +133,7 @@ int main(int argc, char **argv)
    if (!Win) {
       exit(1);
    }
-   glewInit();
+   
    Init();
    glutReshapeFunc(Reshape);
    glutKeyboardFunc(Key);

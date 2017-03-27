@@ -29,6 +29,6 @@ executables = [
   'fp-tri',
 ]
 foreach e : executables
-  executable(e, e + '.c', dependencies : [dep_glut, dep_gl, dep_glew, dep_glu, dep_m],
+  executable(e, e + '.c', dependencies : [dep_glut, dep_epoxy, dep_glu, dep_m],
              include_directories : inc_util)
 endforeach

@@ -42,8 +42,9 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
+#include <epoxy/gl.h>
 #define GL_GLEXT_LEGACY
-#include <GL/glew.h>    /* OpenGL Utility Toolkit header */
+#include <epoxy/gl.h>
 #include "glut_wrap.h"    /* OpenGL Utility Toolkit header */
 
 /* Some <math.h> files do not define M_PI... */
@@ -813,7 +814,6 @@ main(int argc, char **argv)
 #endif
 
   glutCreateWindow("Shadowy Leapin' Lizards");
-  glewInit();
 
   if (glutGet(GLUT_WINDOW_STENCIL_SIZE) <= 1) {
     printf("dinoshade: Sorry, I need at least 2 bits of stencil.\n");
@@ -850,7 +850,7 @@ main(int argc, char **argv)
   makeDinosaur();
 
 #ifdef GL_VERSION_1_1
-  if (GLEW_VERSION_1_1 && !forceExtension) {
+  if (GL_VERSION_1_1 && !forceExtension) {
     polygonOffsetVersion = ONE_DOT_ONE;
     glPolygonOffset(-2.0, -9.0);
   } else
@@ -858,7 +858,7 @@ main(int argc, char **argv)
   {
 #ifdef GL_EXT_polygon_offset
   /* check for the polygon offset extension */
-  if (GLEW_EXT_polygon_offset) {
+  if (GL_EXT_polygon_offset) {
     polygonOffsetVersion = EXTENSION;
     glPolygonOffsetEXT(-2.0, -0.002);
   } else 

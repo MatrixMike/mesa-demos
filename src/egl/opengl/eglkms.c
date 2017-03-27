@@ -29,8 +29,7 @@
 
 #include <gbm.h>
 #include "gl_wrap.h"
-#include <GL/glext.h>
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 #include <EGL/eglext.h>
 #include <drm.h>
 #include <xf86drmMode.h>

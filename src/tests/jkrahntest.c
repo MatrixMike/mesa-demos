@@ -17,8 +17,8 @@
  * Joe Krahn  <jkrahn@nc.rr.com>
  */
 
-#include <GL/glx.h>
-#include <GL/gl.h>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>

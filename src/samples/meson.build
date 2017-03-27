@@ -51,7 +51,7 @@ foreach e : executables
   executable(
     'sample_' + e,
     e + '.c',
-    dependencies : [dep_glut, dep_glu, dep_glew, dep_gl, dep_m],
+    dependencies : [dep_glut, dep_glu, dep_epoxy, dep_m],
     include_directories : inc_util,
   )
 endforeach

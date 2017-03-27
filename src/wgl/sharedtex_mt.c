@@ -31,7 +31,7 @@
 
 
 #include <windows.h>
-#include <GL/gl.h>
+#include <epoxy/gl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

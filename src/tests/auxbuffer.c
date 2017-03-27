@@ -41,8 +41,8 @@
 #include <string.h>
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
-#include <GL/glew.h>
-#include <GL/glx.h>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
 
 
 static int
@@ -480,7 +480,7 @@ main(int argc, char *argv[])
    XMapWindow(dpy, win);
    glXMakeCurrent(dpy, win, ctx);
 
-   glewInit();
+   
 
    if (printInfo) {
       printf("GL_RENDERER   = %s\n", (char *) glGetString(GL_RENDERER));

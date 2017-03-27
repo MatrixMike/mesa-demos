@@ -119,7 +119,7 @@ PerfShaderProgram(const char *vertShader, const char *fragShader)
    GLuint prog;
    GLint stat;
 
-   if (!GLEW_VERSION_2_0) {
+   if (epoxy_gl_version() < 20) {
       fprintf(stderr, "Error: GL version 2.x or better required\n");
       exit(1);
    }
@@ -252,7 +252,7 @@ main(int argc, char *argv[])
    glutInitWindowSize(WinWidth, WinHeight);
    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_STENCIL);
    Win = glutCreateWindow(argv[0]);
-   glewInit();
+   
    glutReshapeFunc(Reshape);
    glutKeyboardFunc(Key);
    glutSpecialFunc(SpecialKey);

@@ -30,7 +30,7 @@ foreach e : executables
   executable(
     e,
     e + '.c',
-    dependencies : [dep_gl, dep_glew],
+    dependencies : dep_epoxy,
     include_directories : include_directories('../xdemos'),
     install : true
   )

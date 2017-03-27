@@ -50,7 +50,7 @@
 
 #include <assert.h>
 #include <windows.h>
-#include <GL/gl.h>
+#include <epoxy/gl.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

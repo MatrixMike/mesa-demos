@@ -96,13 +96,13 @@ executables = [
   'wrap',
 ]
 foreach e : executables
-  executable(e, e + '.c', dependencies : [dep_gl, dep_glut, dep_glu, dep_glew, dep_m],
+  executable(e, e + '.c', dependencies : [dep_epoxy, dep_glut, dep_glu, dep_m],
              include_directories : inc_util)
 endforeach
 
 executable(
   'multitex_rb',
   'multitex.c',
-  dependencies : [dep_gl, dep_glut, dep_glu, dep_glew],
+  dependencies : [dep_epoxy, dep_glut, dep_glu],
   include_directories : inc_util
 )

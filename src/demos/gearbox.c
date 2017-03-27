@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #ifndef M_PI

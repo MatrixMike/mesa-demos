@@ -34,7 +34,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #if !defined(GL_EXT_texture_array) && !defined(GL_MESA_texture_array)
@@ -317,7 +317,7 @@ int main(int argc, char *argv[])
    glutInitWindowSize(350, 350);
    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
    glutCreateWindow("Array texture test");
-   glewInit();
+   
    glutReshapeFunc(Reshape);
    glutKeyboardFunc(Key);
    glutSpecialFunc(SpecialKey);

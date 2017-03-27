@@ -43,7 +43,7 @@
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
 #include "gl_wrap.h"
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 
 #include <EGL/eglext.h>
 

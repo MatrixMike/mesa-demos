@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #define MAX_POINTS	256

@@ -11,7 +11,7 @@
 
 
 #define GLX_GLXEXT_PROTOTYPES
-#include <GL/glx.h>
+#include <epoxy/glx.h>
 
 
 #if defined(GLX_VERSION_1_3)

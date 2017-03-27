@@ -200,7 +200,7 @@ foreach e : executables
   executable(
     'trivial_' + e,
     e + '.c',
-    dependencies : [dep_gl, dep_glu, dep_glut, dep_glew, dep_m],
+    dependencies : [dep_epoxy, dep_glu, dep_glut, dep_m],
     include_directories : inc_util,
   )
 endforeach

@@ -27,8 +27,8 @@
  */
 
 
-#include <GL/gl.h>
-#include <GL/glx.h>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>

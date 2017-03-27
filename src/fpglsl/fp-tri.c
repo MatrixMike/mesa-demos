@@ -8,7 +8,7 @@
 #include <signal.h>
 #endif
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #include "readtex.c"
@@ -413,7 +413,7 @@ int main(int argc, char **argv)
    glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE | GLUT_DEPTH);
    args(argc, argv);
    glutCreateWindow(filename ? filename : "fp-tri");
-   glewInit();
+   
    glutReshapeFunc(Reshape);
    glutKeyboardFunc(Key);
    glutDisplayFunc(Display);

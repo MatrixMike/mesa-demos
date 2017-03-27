@@ -29,7 +29,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 static GLenum Target = GL_TEXTURE_2D;
@@ -181,7 +181,7 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(type);
 
 	win = glutCreateWindow("Tex test");
-        glewInit();
+        
 	if (!win) {
 		exit(1);
 	}

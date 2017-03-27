@@ -18,22 +18,24 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+common_deps = [dep_epoxy, dep_glut, dep_glu]
+
 sotest = executable(
   'sotest',
   ['sotest.c', 'framework.c', 'framework.h'],
-  dependencies : [dep_gl, dep_glu, dep_glew, dep_glut],
+  dependencies : common_deps,
   include_directories : inc_util,
 )
 cltest = executable(
   'cltest',
   ['cltest.c', 'framework.c', 'framework.h'],
-  dependencies : [dep_gl, dep_glu, dep_glew, dep_glut],
+  dependencies : common_deps,
   include_directories : inc_util,
 )
 vstest = executable(
   'vstest',
   ['vstest.c', 'framework.c', 'framework.h'],
-  dependencies : [dep_gl, dep_glu, dep_glew, dep_glut],
+  dependencies : common_deps,
   include_directories : inc_util,
 )
 

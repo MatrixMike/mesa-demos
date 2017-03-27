@@ -8,7 +8,7 @@
 #include <signal.h>
 #endif
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #include "readtex.c"
@@ -89,7 +89,7 @@ static void Init( void )
    }
    fprintf(stderr, "%.*s\n", sz, buf);
 
-   if (!GLEW_ARB_fragment_program) {
+   if (!epoxy_has_gl_extension("GL_ARB_fragment_program")) {
       printf("Error: GL_ARB_fragment_program not supported!\n");
       exit(1);
    }
@@ -252,7 +252,7 @@ int main(int argc, char **argv)
    glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE | GLUT_DEPTH);
    args(argc, argv);
    glutCreateWindow(filename);
-   glewInit();
+   
    glutReshapeFunc(Reshape);
    glutKeyboardFunc(Key);
    glutDisplayFunc(Draw);

@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 
@@ -158,15 +158,15 @@ CheckExtensions(void)
 {
    GLint numBuf;
 
-   if (!GLEW_EXT_framebuffer_object) {
+   if (!epoxy_has_gl_extension("GL_EXT_framebuffer_object")) {
       printf("Sorry, GL_EXT_framebuffer_object is required!\n");
       exit(1);
    }
-   if (!GLEW_ARB_draw_buffers) {
+   if (!epoxy_has_gl_extension("GL_ARB_draw_buffers")) {
       printf("Sorry, GL_ARB_draw_buffers is required!\n");
       exit(1);
    }
-   if (!GLEW_VERSION_2_0) {
+   if (epoxy_gl_version() < 20) {
       printf("Sorry, OpenGL 2.0 is required!\n");
       exit(1);
    }
@@ -299,7 +299,7 @@ main(int argc, char *argv[])
    glutInitWindowSize(Width, Height);
    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
    Win = glutCreateWindow(argv[0]);
-   glewInit();
+   
    glutReshapeFunc(Reshape);
    glutKeyboardFunc(Key);
    glutDisplayFunc(Display);

@@ -39,7 +39,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include "readtex.h"
 
@@ -539,25 +539,22 @@ static void load_envmaps(void)
 static void init( GLboolean useImageFiles )
 {
    /* check for extensions */
-   if (!GLEW_ARB_texture_cube_map) {
+   if (!epoxy_has_gl_extension("GL_ARB_texture_cube_map")) {
       printf("Sorry, this demo requires GL_ARB_texture_cube_map\n");
       exit(0);
    }
 
    /* Needed for glGenerateMipmapEXT / auto mipmapping
     */
-   supportFBO = GLEW_EXT_framebuffer_object;
+   supportFBO = GL_EXT_framebuffer_object;
 
-   if (!supportFBO && !GLEW_SGIS_generate_mipmap) {
+   if (!supportFBO && !epoxy_has_gl_extension("GL_SGIS_generate_mipmap")) {
       printf("Sorry, this demo requires GL_EXT_framebuffer_object or "
 	     "GL_SGIS_generate_mipmap\n");
       exit(0);
    }
 
-   /* GLEW doesn't know about this extension yet, so use the old GLUT function
-    * to check for availability.
-    */
-   supportSeamless = glutExtensionSupported("GL_ARB_seamless_cube_map");
+   supportSeamless = GL_ARB_seamless_cube_map;
 
    printf("GL_RENDERER: %s\n", (char *) glGetString(GL_RENDERER));
 
@@ -619,7 +616,6 @@ int main( int argc, char *argv[] )
    glutInit(&argc, argv);
    glutInitDisplayMode( GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE );
    glutCreateWindow("Texture Cube Mapping");
-   glewInit();
    glutReshapeFunc( reshape );
    glutKeyboardFunc( key );
    glutSpecialFunc( specialkey );

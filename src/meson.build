@@ -20,7 +20,7 @@
 
 subdir('util')
 # TODO: data is just install targets
-subdir('demos')
+#subdir('demos')
 if with_egl
   subdir('egl')
 endif

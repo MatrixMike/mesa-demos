@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 
@@ -20,7 +20,7 @@ static void Init( void )
       ;
    GLuint modulateProg;
 
-   if (!GLEW_ARB_fragment_program) {
+   if (!epoxy_has_gl_extension("GL_ARB_fragment_program")) {
       printf("Error: GL_ARB_fragment_program not supported!\n");
       exit(1);
    }
@@ -105,7 +105,7 @@ int main(int argc, char **argv)
 	exit(1);
     }
 
-    glewInit();
+    
 
     Init();
 

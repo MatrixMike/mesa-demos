@@ -24,7 +24,7 @@
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
 #include <X11/extensions/shape.h>
-#include <GL/glx.h>
+#include <epoxy/glx.h>
 
 #ifndef PI
 #define PI 3.1415926

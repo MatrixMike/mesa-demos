@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 

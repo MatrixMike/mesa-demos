@@ -18,5 +18,5 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-executable('dds', 'dds.c', dependencies : [dep_gl, dep_glut, dep_glu, dep_glew],
+executable('dds', 'dds.c', dependencies : [dep_epoxy, dep_glut, dep_glu],
            include_directories : inc_util)

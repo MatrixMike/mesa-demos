@@ -46,9 +46,8 @@
 #include <string.h>
 #include <sys/time.h>
 #include <unistd.h>
-#include <GLES2/gl2.h>
-#include <EGL/egl.h>
-#include <EGL/eglext.h>
+#include <epoxy/gl.h>
+#include <epoxy/egl.h>
 #include "eglut.h"
 
 #define STRIPS_PER_TOOTH 7

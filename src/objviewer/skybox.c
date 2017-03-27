@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "readtex.h"
 #include "skybox.h"
 

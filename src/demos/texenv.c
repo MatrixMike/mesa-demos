@@ -49,7 +49,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <GL/glew.h> /* for GL_BGRA */
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #undef max

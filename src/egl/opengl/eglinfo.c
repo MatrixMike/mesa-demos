@@ -26,7 +26,7 @@
 
 #define EGL_EGLEXT_PROTOTYPES
 
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 #include <EGL/eglext.h>
 #include <assert.h>
 #include <stdio.h>

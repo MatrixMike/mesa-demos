@@ -11,7 +11,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-#include "GL/glew.h"
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #include "readtex.h"
@@ -70,12 +70,12 @@ static void reshape( int width, int height )
 
 static void init( void )
 {
-   if (GLEW_ARB_window_pos) {
+   if (epoxy_has_gl_extension("GL_ARB_window_pos")) {
       printf("Using GL_ARB_window_pos\n");
       WindowPosFunc = glWindowPos2fARB;
    }
    else
-   if (GLEW_MESA_window_pos) {
+   if (epoxy_has_gl_extension("GL_MESA_window_pos")) {
       printf("Using GL_MESA_window_pos\n");
       WindowPosFunc = glWindowPos2fMESA;
    }
@@ -103,8 +103,6 @@ int main( int argc, char *argv[] )
    if (glutCreateWindow("winpos") <= 0) {
       exit(0);
    }
-
-   glewInit();
 
    init();
 

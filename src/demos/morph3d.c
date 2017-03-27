@@ -135,6 +135,7 @@ So the angle is:
 #ifndef _WIN32
 #include <unistd.h>
 #endif
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include <math.h>
 

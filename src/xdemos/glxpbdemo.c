@@ -32,7 +32,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <X11/Xlib.h>
-#include <GL/glx.h>
+#include <epoxy/glx.h>
 
 /* Some ugly global vars */
 static GLXFBConfig gFBconfig = 0;

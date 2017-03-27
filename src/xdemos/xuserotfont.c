@@ -34,7 +34,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
-#include <GL/glx.h>
+#include <epoxy/glx.h>
 #include "xuserotfont.h"
 
 

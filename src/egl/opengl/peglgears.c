@@ -35,7 +35,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "gl_wrap.h"
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 #include <EGL/eglext.h>
 
 #define MAX_CONFIGS 10

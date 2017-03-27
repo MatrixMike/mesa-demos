@@ -45,7 +45,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #define SIZE 16 /* not larger then 16 */
@@ -282,7 +282,7 @@ main(int argc, char** argv)
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize (600, 600);
     glutCreateWindow (argv[0]);
-    glewInit();
+    
 
     if (!glutExtensionSupported("GL_EXT_texture_compression_s3tc")) {
        fprintf(stderr, "This test requires GL_EXT_texture_compression_s3tc.\n");

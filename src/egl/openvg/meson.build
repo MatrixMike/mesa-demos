@@ -18,21 +18,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+common_deps = [dep_vg, dep_epoxy, dep_x11]
+
 if have_x11
   executable(
     'lion_x11',
     ['lion.c', 'lion-render.c', 'lion-render.h'],
-    dependencies : [dep_vg, dep_egl, dep_x11, dep_eglut_x11, dep_m],
+    dependencies : [common_deps, dep_eglut_x11, dep_m],
   )
   executable(
     'sp_x11',
     'sp.c',
-    dependencies : [dep_vg, dep_egl, dep_x11, dep_eglut_x11, dep_m],
+    dependencies : [common_deps, dep_eglut_x11, dep_m],
   )
 endif
 
 if have_freetype2
-  executable('text', 'text.c', dependencies : [dep_vg, dep_egl, dep_x11, dep_freetype2])
+  executable('text', 'text.c', dependencies : [common_deps, dep_freetype2])
 endif
 
 subdir('trivial')

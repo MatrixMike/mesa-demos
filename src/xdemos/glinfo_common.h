@@ -30,9 +30,9 @@
 
 #ifdef _WIN32
 /* GL/glext.h is not commonly available on Windows. */
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #else
-#include <GL/gl.h>
+#include <epoxy/gl.h>
 #include <GL/glext.h>
 #endif
 

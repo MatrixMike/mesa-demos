@@ -28,7 +28,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include "shaderutil.h"
 #include <math.h>
@@ -844,7 +844,7 @@ Init(void)
       exit(-1);
    }
 
-   if (!GLEW_VERSION_3_2)
+   if (epoxy_gl_version() < 32)
    {
       fprintf(stderr, "OpenGL 3.2 (needed for transform feedback and "
               "geometry shaders) not supported!\n");
@@ -934,11 +934,7 @@ main(int argc, char *argv[])
    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 #endif
    Win = glutCreateWindow(argv[0]);
-
-   // glewInit requires glewExperimentel set to true for core profiles.
-   // Depending on the glew version it also generates GL_INVALID_ENUM.
-   glewExperimental = GL_TRUE;
-   glewInit();
+   
    glGetError();
 
    glutReshapeFunc(Reshape);

@@ -18,6 +18,7 @@
 #include <windows.h>
 #endif
 
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include "readtex.h"
 #include "tunneldat.h"

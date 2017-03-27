@@ -25,8 +25,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <X11/Xlib.h>
-#include <GL/gl.h>
-#include <GL/glx.h>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
 
 /** \file opencloseopen.c
  * Simple test for Mesa bug #508473.  Create a window and rendering context.

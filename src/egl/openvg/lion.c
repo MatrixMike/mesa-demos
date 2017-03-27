@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <VG/openvg.h>
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 
 #include "lion-render.h"
 #include "eglut.h"

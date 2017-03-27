@@ -45,8 +45,8 @@
 /*# include <stdint.h>*/
 #endif
 # define GLX_GLXEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glx.h>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
 
 #ifndef GLX_MESA_swap_control
 typedef GLint ( * PFNGLXSWAPINTERVALMESAPROC) (unsigned interval);

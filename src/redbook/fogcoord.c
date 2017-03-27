@@ -58,7 +58,7 @@
  *  three vertices of the triangle. 
  */
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include <math.h>
 #include <stdlib.h>
@@ -184,7 +184,7 @@ int main(int argc, char** argv)
    glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
    glutInitWindowSize(500, 500);
    glutCreateWindow(argv[0]);
-   glewInit();
+   
    init();
    glutReshapeFunc (reshape);
    glutKeyboardFunc (keyboard);

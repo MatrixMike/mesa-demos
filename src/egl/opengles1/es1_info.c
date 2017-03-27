@@ -18,7 +18,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
-#include <EGL/egl.h>
+#include <epoxy/gl.h>
+#include <epoxy/egl.h>
 
 
 /*
@@ -90,12 +91,6 @@ info(EGLDisplay egl_dpy)
 
    s = eglQueryString(egl_dpy, EGL_CLIENT_APIS);
    printf("EGL_CLIENT_APIS: %s\n", s);
-
-const char *glGetString (int name);
-
-#define GL_RENDERER                       0x1F01
-#define GL_VERSION                        0x1F02
-#define GL_EXTENSIONS                     0x1F03
 
    printf("GL_VERSION: %s\n", (char *) glGetString(GL_VERSION));
    printf("GL_RENDERER: %s\n", (char *) glGetString(GL_RENDERER));

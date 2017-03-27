@@ -60,7 +60,7 @@
  *  will not get less than 2.0, nor greater than GL_POINT_SIZE_MAX.
  */
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -169,7 +169,7 @@ int main(int argc, char** argv)
    glutInitWindowSize (500, 500); 
    glutInitWindowPosition (100, 100);
    glutCreateWindow (argv[0]);
-   glewInit();
+   
    init ();
    glutDisplayFunc (display); 
    glutReshapeFunc (reshape);

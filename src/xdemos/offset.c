@@ -46,7 +46,7 @@ PERFORMANCE OF THIS SOFTWARE.
  */
 
 
-#include <GL/glx.h>
+#include <epoxy/glx.h>
 #include <X11/keysym.h>
 #include <stdlib.h>
 #include <stdio.h>

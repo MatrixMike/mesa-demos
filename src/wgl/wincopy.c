@@ -35,7 +35,7 @@
  * Copyright	(c) 2013, Attachmate Corporation All Rights Reserved
  */
 #include <windows.h>
-#include <GL/gl.h>
+#include <epoxy/gl.h>
 #include <assert.h>
 #include "wglutil.h"
 

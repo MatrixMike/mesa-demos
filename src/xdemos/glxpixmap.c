@@ -8,9 +8,9 @@
  */
 
 
-#include <GL/gl.h>
+#include <epoxy/gl.h>
 #define GLX_GLXEXT_PROTOTYPES
-#include <GL/glx.h>
+#include <epoxy/glx.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

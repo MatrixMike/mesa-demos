@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "GL/glew.h"
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 static GLuint Window = 0;
@@ -222,7 +222,7 @@ int main( int argc, char *argv[] )
    glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE );
 
    Window = glutCreateWindow("Texture Objects");
-   glewInit();
+   
    if (!Window) {
       exit(1);
    }

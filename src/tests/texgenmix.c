@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #undef max
@@ -619,7 +619,7 @@ int main( int argc, char *argv[] )
    glutInitWindowSize( winWidth, winHeight );
    glutInitWindowPosition( 0, 0 );
    glutCreateWindow( "Mixed texgen/non-texgen texture coordinate test" );
-   glewInit();
+   
 
    initialize();
    instructions();

@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 typedef struct

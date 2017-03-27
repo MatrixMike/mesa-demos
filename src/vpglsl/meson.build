@@ -21,6 +21,6 @@
 executable(
   'vp-tris_glsl',
   'vp-tris.c',
-  dependencies : [dep_gl, dep_glew, dep_glut, dep_glu],
+  dependencies : [dep_epoxy, dep_glut, dep_glu],
   include_directories : inc_util,
 )

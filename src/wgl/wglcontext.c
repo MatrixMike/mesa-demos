@@ -22,7 +22,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include <GL/wglew.h>
 
 static LRESULT CALLBACK

@@ -36,7 +36,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #include "readtex.h"
@@ -264,7 +264,7 @@ int main( int argc, char *argv[] )
    glutInitWindowSize( 350, 350 );
    glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE );
    glutCreateWindow( "Bug #3195 Test" );
-   glewInit();
+   
    glutReshapeFunc( Reshape );
    glutKeyboardFunc( Key );
    glutSpecialFunc( SpecialKey );

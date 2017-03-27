@@ -21,8 +21,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "GL/osmesa.h"
 #include "gl_wrap.h"
+#include "GL/osmesa.h"
 
 
 #define SAVE_TARGA

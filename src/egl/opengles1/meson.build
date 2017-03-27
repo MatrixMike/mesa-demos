@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-common_deps = [dep_gles1, dep_egl, dep_x11, dep_m]
+common_deps = [dep_epoxy, dep_x11, dep_m]
 
 executables = [
   'bindtex.c',

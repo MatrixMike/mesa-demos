@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 
@@ -41,11 +41,11 @@ static void Init(void)
    fprintf(stderr, "GL_RENDERER   = %s\n", (char *) glGetString(GL_RENDERER));
    fprintf(stderr, "GL_VERSION    = %s\n", (char *) glGetString(GL_VERSION));
    fprintf(stderr, "GL_VENDOR     = %s\n", (char *) glGetString(GL_VENDOR));
-   fprintf(stderr, "GL_GREMEDY_string_marker = %i\n", GLEW_GREMEDY_string_marker);
-   fprintf(stderr, "GL_GREMEDY_frame_terminator = %i\n", GLEW_GREMEDY_frame_terminator);
+   fprintf(stderr, "GL_GREMEDY_string_marker = %i\n", epoxy_has_gl_extension("GL_GREMEDY_string_marker"));
+   fprintf(stderr, "GL_GREMEDY_frame_terminator = %i\n", epoxy_has_gl_extension("GL_GREMEDY_frame_terminator"));
    fflush(stderr);
 
-   if (GLEW_GREMEDY_string_marker) {
+   if (epoxy_has_gl_extension("GL_GREMEDY_string_marker")) {
       glStringMarkerGREMEDY(0, __FUNCTION__);
    }
 
@@ -54,7 +54,7 @@ static void Init(void)
 
 static void Reshape(int width, int height)
 {
-   if (GLEW_GREMEDY_string_marker) {
+   if (epoxy_has_gl_extension("GL_GREMEDY_string_marker")) {
       glStringMarkerGREMEDY(0, __FUNCTION__);
    }
 
@@ -80,7 +80,7 @@ static void Key(unsigned char key, int x, int y)
 
 static void Draw(void)
 {
-   if (GLEW_GREMEDY_string_marker) {
+   if (epoxy_has_gl_extension("GL_GREMEDY_string_marker")) {
       glStringMarkerGREMEDY(0, __FUNCTION__);
    }
 
@@ -97,7 +97,7 @@ static void Draw(void)
 
    glFlush();
 
-   if (GLEW_GREMEDY_frame_terminator) {
+   if (epoxy_has_gl_extension("GL_GREMEDY_frame_terminator")) {
       glFrameTerminatorGREMEDY();
    }
 
@@ -144,7 +144,7 @@ int main(int argc, char **argv)
       exit(1);
    }
 
-   glewInit();
+   
 
    Init();
 

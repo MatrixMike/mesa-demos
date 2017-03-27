@@ -54,7 +54,7 @@
 #include <fcntl.h>
 
 /* for EGL */
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 #include <GLES/gl.h>
 
 static int tty_fd = -1;

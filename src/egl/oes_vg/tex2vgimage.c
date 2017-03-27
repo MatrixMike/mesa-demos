@@ -18,12 +18,11 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
-#include <GL/gl.h>
+#include <epoxy/gl.h>
 #include <VG/openvg.h>
 #include <GL/glu.h>
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 
-#include <EGL/eglext.h>
 #include <VG/vgext.h>
 
 #define WINDOW_WIDTH   300

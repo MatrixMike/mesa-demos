@@ -47,7 +47,7 @@
 
 #ifdef GL_VERSION_1_1
 
-/* Microsoft OpenGL 1.1's <GL/gl.h> forgets to define
+/* Microsoft OpenGL 1.1's <epoxy/gl.h> forgets to define
    GL_TEXTURE_INTERNAL_FORMAT. */
 #ifndef GL_TEXTURE_INTERNAL_FORMAT
 #define GL_TEXTURE_INTERNAL_FORMAT GL_TEXTURE_COMPONENTS

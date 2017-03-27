@@ -10,7 +10,7 @@
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
 #include <VG/openvg.h>  /* using full OpenGL for now */
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 
 
 static init_func    init = 0;

@@ -40,10 +40,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
-#include <GLES/gl.h>
-#include <GLES/glext.h>
-#include <EGL/egl.h>
-#include <EGL/eglext.h>
+#include <epoxy/gl.h>
+#include <epoxy/egl.h>
 
 struct app_data {
    /* native */

@@ -27,7 +27,7 @@
 #include <math.h>
 #include <assert.h>
 
-#include <GLES/gl.h>
+#include <epoxy/gl.h>
 #include "eglut.h"
 
 #ifndef M_PI

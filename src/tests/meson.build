@@ -123,7 +123,7 @@ executables = [
 foreach e : executables
   executable(
     'test_' + e, e + '.c',
-    dependencies : [dep_glut, dep_glew, dep_glu, dep_gl, dep_m],
+    dependencies : [dep_glut, dep_glu, dep_epoxy, dep_m],
     include_directories : inc_util
   )
 endforeach
@@ -155,7 +155,7 @@ executables = [
 foreach e : executables
   executable(
     'test_' + e, e + '.c',
-    dependencies : [dep_glut, dep_glew, dep_glu, dep_gl, dep_x11, dep_m],
+    dependencies : [dep_glut, dep_epoxy, dep_glu, dep_x11, dep_m],
     include_directories : inc_util,
   )
 endforeach
@@ -174,7 +174,7 @@ if with_mesa_source
   executable(
     'getproclist',
     ['getprocaddress.c', getproclist_h],
-    dependencies : [dep_glut, dep_glew, dep_glu, dep_gl, dep_x11, dep_m],
+    dependencies : [dep_glut, dep_epoxy, dep_glu, dep_x11, dep_m],
     include_directories : inc_util,
   )
 endif

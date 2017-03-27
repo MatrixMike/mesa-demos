@@ -5,7 +5,7 @@
  * Author: Zack Rusin
  */
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 
 #define GL_GLEXT_PROTOTYPES
 #include "readtex.h"
@@ -456,7 +456,7 @@ int main(int argc, char **argv)
       exit(1);
    }
 
-   glewInit();
+   
    init();
 
    glutReshapeFunc(reshape);

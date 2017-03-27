@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include "shaderutil.h"
 
@@ -51,7 +51,9 @@ fake_ValidateProgram(GLuint prog)
 GLboolean
 ShadersSupported(void)
 {
-   if (GLEW_VERSION_2_0) {
+   int ver = epoxy_gl_version();
+
+   if (ver < 20) {
       CreateShader = glCreateShader;
       DeleteShader = glDeleteShader;
       ShaderSource = glShaderSource;
@@ -64,7 +66,7 @@ ShadersSupported(void)
       UseProgram = glUseProgram;
       GetProgramiv = glGetProgramiv;
       GetProgramInfoLog = glGetProgramInfoLog;
-      ValidateProgramARB = (GLEW_ARB_shader_objects)
+      ValidateProgramARB = (epoxy_has_gl_extension("GL_ARB_shader_objects"))
 	 ? glValidateProgramARB : fake_ValidateProgram;
       Uniform1i = glUniform1i;
       Uniform1fv = glUniform1fv;
@@ -76,8 +78,9 @@ ShadersSupported(void)
       GetAttribLocation = glGetAttribLocation;
       return GL_TRUE;
    }
-   else if (GLEW_ARB_vertex_shader && GLEW_ARB_fragment_shader
-	    && GLEW_ARB_shader_objects) {
+   else if (epoxy_has_gl_extension("GL_ARB_vertex_shader")
+            && epoxy_has_gl_extension("GL_ARB_fragment_shader")
+	    && epoxy_has_gl_extension("GL_ARB_shader_objects")) {
       fprintf(stderr, "Warning: Trying ARB GLSL instead of OpenGL 2.x.  This may not work.\n");
       CreateShader = glCreateShaderObjectARB;
       DeleteShader = glDeleteObjectARB;

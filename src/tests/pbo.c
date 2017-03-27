@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #include "../util/readtex.c"  /* a hack, I know */
@@ -287,7 +287,7 @@ main( int argc, char *argv[] )
    glutInitWindowSize( 750, 250 );
    glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE );
    glutCreateWindow(argv[0]);
-   glewInit();
+   
    Init();
    glutReshapeFunc( Reshape );
    glutKeyboardFunc( Key );

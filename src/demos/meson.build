@@ -76,7 +76,7 @@ executables = [
 ]
 
 foreach e : executables
-  executable(e, e, dependencies : [dep_gl, dep_glew, dep_util, dep_m], install : true)
+  executable(e, e, dependencies : [dep_gl, dep_epoxy, dep_util, dep_m], install : true)
 endforeach
 executable('tunnel', ['tunnel.c', 'tunneldat.h'], dependencies : dep_util, install : true)
 executable('rain', ['rain.cxx', 'particles.cxx'], dependencies : dep_util, install : true)

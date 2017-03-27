@@ -22,7 +22,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 /* Some <math.h> files do not define M_PI... */
@@ -112,8 +112,9 @@ static void
 makeFragShader(void)
 {
    GLint stat;
+   int ver = epoxy_gl_version();
 
-   HaveShaders = GLEW_VERSION_2_0;
+   HaveShaders = (ver >= 20);
    if (!HaveShaders)
       return;
 
@@ -618,7 +619,6 @@ main(int argc, char **argv)
     }
   }
   glutCreateWindow("sprite blast");
-  glewInit();
   glutReshapeFunc(reshape);
   glutDisplayFunc(redraw);
   glutMouseFunc(mouse);

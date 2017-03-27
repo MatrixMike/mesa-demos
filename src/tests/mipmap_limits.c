@@ -51,7 +51,7 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #include "readtex.h"
@@ -439,7 +439,7 @@ main(int argc, char **argv)
    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
    glutInitWindowSize(Width, Height);
    glutCreateWindow(argv[0]);
-   glewInit();
+   
    myinit();
    glutReshapeFunc(myReshape);
    glutDisplayFunc(display);

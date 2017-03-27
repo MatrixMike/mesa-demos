@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include "shaderutil.h"
 
@@ -139,6 +139,7 @@ SpecialKey(int key, int x, int y)
 static void
 Init(void)
 {
+   int ver = epoxy_gl_version();
    if (!ShadersSupported())
       exit(1);
 
@@ -157,7 +158,7 @@ Init(void)
 
    printf("GL_RENDERER = %s\n",(const char *) glGetString(GL_RENDERER));
 
-   if (GLEW_VERSION_2_0) {
+   if (ver < 20) {
       assert(glIsProgram(program));
       assert(glIsShader(fragShader));
       assert(glIsShader(vertShader));
@@ -189,7 +190,7 @@ main(int argc, char *argv[])
    glutInitWindowSize(400, 400);
    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
    win = glutCreateWindow(argv[0]);
-   glewInit();
+   
    glutReshapeFunc(Reshape);
    glutKeyboardFunc(Key);
    glutSpecialFunc(SpecialKey);
@@ -199,4 +200,3 @@ main(int argc, char *argv[])
    glutMainLoop();
    return 0;
 }
-

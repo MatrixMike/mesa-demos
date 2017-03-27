@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include "shaderutil.h"
 
@@ -175,7 +175,7 @@ main (int argc, char **argv)
   glutDisplayFunc (render);
   glutMouseFunc (mouse);
   glutMotionFunc (motion);
-  glewInit ();
+  
   init_opengl ();
   glutMainLoop ();
   return 0;

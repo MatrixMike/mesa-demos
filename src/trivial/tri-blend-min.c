@@ -42,7 +42,7 @@
  *  Use the 't' key to toggle the order of drawing polygons.
  */
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 static int leftFirst = GL_TRUE;
@@ -137,7 +137,7 @@ int main(int argc, char** argv)
    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
    glutInitWindowSize (200, 200);
    glutCreateWindow (argv[0]);
-   glewInit();
+   
    init();
    glutReshapeFunc (reshape);
    glutKeyboardFunc (keyboard);

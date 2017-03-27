@@ -13,6 +13,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #define COS(X)   cos( (X) * 3.14159/180.0 )

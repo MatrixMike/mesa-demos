@@ -18,5 +18,5 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-executable('fpglsl-tri', 'fp-tri.c', dependencies : [dep_glut, dep_gl, dep_glew, dep_glu, dep_m],
+executable('fpglsl-tri', 'fp-tri.c', dependencies : [dep_glut, dep_epoxy, dep_glu, dep_m],
            include_directories : inc_util)

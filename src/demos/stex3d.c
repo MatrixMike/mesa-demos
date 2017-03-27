@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 
@@ -675,8 +675,6 @@ main(int argc, char **argv)
    if (glutCreateWindow("stex3d") <= 0) {
       exit(0);
    }
-
-   glewInit();
 
    init();
 

@@ -17,9 +17,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
-#include <GLES/gl.h>
-#include <GLES/glext.h>
-#include <EGL/egl.h>
+#include <epoxy/gl.h>
+#include <epoxy/egl.h>
 
 
 static int TexWidth = 256, TexHeight = 256;

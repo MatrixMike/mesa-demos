@@ -53,7 +53,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include "gl_wrap.h"
-#include <EGL/egl.h>
+#include <epoxy/egl.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

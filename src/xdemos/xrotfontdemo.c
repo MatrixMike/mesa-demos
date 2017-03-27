@@ -29,8 +29,8 @@
  */
 
 
-#include <GL/gl.h>
-#include <GL/glx.h>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

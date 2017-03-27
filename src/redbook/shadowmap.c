@@ -43,7 +43,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 /*#include "helpers.h"*/
 
@@ -337,7 +337,7 @@ main( int argc, char** argv )
     glutInitWindowSize( 512, 512 );
     glutInitWindowPosition( 100, 100 );
     glutCreateWindow( argv[0] );
-    glewInit();
+    
 
     init();
 

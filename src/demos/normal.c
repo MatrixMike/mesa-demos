@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 
@@ -459,7 +459,8 @@ Init(void)
       "  gl_Position = ftransform();\n"
       "}\n";
 
-   if (!GLEW_VERSION_2_0) {
+   int ver = epoxy_gl_version();
+   if (ver < 20) {
       printf("This program requires OpenGL 2.x or higher\n");
       exit(1);
    }
@@ -580,7 +581,6 @@ main(int argc, char *argv[])
    glutInit(&argc, argv);
    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
    win = glutCreateWindow(argv[0]);
-   glewInit();
    glutReshapeFunc(Reshape);
    glutKeyboardFunc(Key);
    glutSpecialFunc(SpecialKey);

@@ -32,7 +32,7 @@
 #include <windows.h>
 #undef CLIP_MASK
 #endif
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #include "readtex.h"
@@ -1046,6 +1046,7 @@ static GLint Args(int argc, char **argv)
 int main(int argc, char **argv)
 {
    GLenum type;
+   int ver = epoxy_gl_version();
 
    GLuint arg_mode = Args(argc, argv);
 
@@ -1066,15 +1067,13 @@ int main(int argc, char **argv)
       exit(0);
    }
 
-   glewInit();
-
    /* Make sure server supports vertex arrays */
-   if (!GLEW_VERSION_1_1)
+   if (ver < 11)
    {
       printf("Vertex arrays not supported by this renderer\n");
       allowed &= ~(LOCKED|DRAW_ARRAYS|DRAW_ELTS|ARRAY_ELT);
    }
-   else if (!GLEW_EXT_compiled_vertex_array)
+   else if (!epoxy_has_gl_extension("GL_EXT_compiled_vertex_array"))
    {
       printf("Compiled vertex arrays not supported by this renderer\n");
       allowed &= ~LOCKED;

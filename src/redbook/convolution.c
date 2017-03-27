@@ -45,7 +45,7 @@
  *  Use various 2D convolutions filters to find edges in an image.
  *  
  */
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include <assert.h>
 #include <stdio.h>
@@ -208,7 +208,7 @@ int main(int argc, char** argv)
    glutInitWindowSize(width, height);
    glutInitWindowPosition(100, 100);
    glutCreateWindow(argv[0]);
-   glewInit();
+   
    init();
    glutReshapeFunc(reshape);
    glutKeyboardFunc(keyboard);

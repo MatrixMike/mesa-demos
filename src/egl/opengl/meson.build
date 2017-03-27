@@ -18,22 +18,50 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-executable('eglinfo', 'eglinfo.c', dependencies : dep_egl,
-           include_directories : inc_util)
-executable('peglgears', 'peglgears.c', dependencies : [dep_gl, dep_egl, dep_m],
-           include_directories : inc_util)
+executable(
+  'eglinfo',
+  'eglinfo.c',
+  dependencies : [dep_epoxy, dep_egl],
+  include_directories : inc_util,
+)
+executable(
+  'peglgears',
+  'peglgears.c',
+  dependencies : [dep_epoxy, dep_egl, dep_m],
+  include_directories : inc_util,
+)
+
 if with_libdrm and with_gbm
-  executable('eglkms', 'eglkms.c', dependencies : [dep_gl, dep_egl, dep_libdrm, dep_gbm],
-             include_directories : inc_util)
+  executable(
+    'eglkms',
+    'eglkms.c',
+    dependencies : [dep_epoxy, dep_egl, dep_libdrm, dep_gbm],
+    include_directories : inc_util)
 endif
+
 if with_x11
-  executable('eglgears_x11', 'eglgears.c', dependencies : [dep_m, dep_gl, dep_eglut_x11],
-             include_directories : inc_util)
-  executable('egltri_x11', 'egltri.c', dependencies : [dep_gl, dep_eglut_x11],
-             include_directories : inc_util)
-  executable('xeglgears', 'xeglgears.c', dependencies : [dep_m, dep_gl, dep_eglut_x11],
-             include_directories : inc_util)
-  executable('xeglthreads', 'xeglthreads.c',
-             dependencies : [dep_m, dep_gl, dep_eglut_x11, dep_thread],
-             include_directories : inc_util)
+  executable(
+    'eglgears_x11',
+    'eglgears.c',
+    dependencies : [dep_epoxy, dep_m, dep_eglut_x11],
+    include_directories : inc_util,
+  )
+  executable(
+    'egltri_x11',
+    'egltri.c',
+    dependencies : [dep_epoxy, dep_eglut_x11],
+    include_directories : inc_util,
+  )
+  executable(
+    'xeglgears',
+    'xeglgears.c',
+    dependencies : [dep_epoxy, dep_m, dep_eglut_x11],
+    include_directories : inc_util,
+  )
+  executable(
+    'xeglthreads',
+    'xeglthreads.c',
+    dependencies : [dep_epoxy, dep_m, dep_eglut_x11, dep_thread],
+    include_directories : inc_util,
+  )
 endif

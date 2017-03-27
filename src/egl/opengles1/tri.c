@@ -31,9 +31,8 @@
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
-#include <GLES/gl.h>  /* use OpenGL ES 1.x */
-#include <GLES/glext.h>
-#include <EGL/egl.h>
+#include <epoxy/gl.h>
+#include <epoxy/egl.h>
 
 #include "eglut.h"
 

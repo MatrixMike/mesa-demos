@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-common_deps = [dep_gles1, dep_egl, dep_vg, dep_x11, dep_m, dep_x11]
+common_deps = [dep_epoxy, dep_glu, dep_vg, dep_x11, dep_m, dep_x11]
 
 executable('vgimage2tex', 'vgimage2tex.c', dependencies : common_deps, install : true)
 executable('tex2vgimage', 'tex2vgimage.c', dependencies : common_deps, install : true)

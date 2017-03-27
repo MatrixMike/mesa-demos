@@ -26,6 +26,7 @@ cc = meson.get_compiler('c')
 require_native = (host_system != 'windows' and host_system != 'darwin')
 
 dep_egl = []
+dep_epoxy = dependency('epoxy')
 dep_gl = []
 dep_gles1 = []
 dep_gles2 = []
@@ -51,16 +52,6 @@ if host_system == 'windows'
 else
   dep_gl = dependency('gl')
   dep_glu = dependency('glu')
-endif
-dep_glew = dependency('glew', version : '>=1.5.4', required : require_native)
-if not dep_glew.found()
-  if meson.is_cross_build()
-    _dep_glew = cc.find_library('glew32', dirs : meson.get_cross_property('glew_library'))
-    dep_glew = declare_dependency(
-      dependencies : [dep_glew, dep_gl],
-      include_directories : include_directories(meson.get_cross_property('glew_include_dir'))
-    )
-  endif
 endif
 
 if host_system.startswith('linux')

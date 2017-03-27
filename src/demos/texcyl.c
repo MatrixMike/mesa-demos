@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #include "readtex.h"

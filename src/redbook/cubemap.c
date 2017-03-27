@@ -50,7 +50,7 @@
  *  forward and backward.
  */
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include <stdlib.h>
 #include <stdio.h>

@@ -48,7 +48,7 @@ foreach e : executables
   executable(
     e,
     e + '.c',
-    dependencies : [dep_gl, dep_glu, dep_x11, dep_xext, dep_m],
+    dependencies : [dep_epoxy, dep_glu, dep_x11, dep_xext, dep_m],
     include_directories : inc_util,
     install : true,
   )
@@ -62,7 +62,7 @@ foreach e : executables
   executable(
     e,
     e + '.c',
-    dependencies : [dep_gl, dep_x11, dep_thread, dep_m],
+    dependencies : [dep_epoxy, dep_x11, dep_thread, dep_m],
     include_directories : inc_util,
     install : true,
   )
@@ -77,7 +77,7 @@ foreach e : executables
   executable(
     e,
     e + '.c',
-    dependencies : [dep_gl, dep_x11, dep_m],
+    dependencies : [dep_epoxy, dep_x11, dep_m],
     link_with : libpbutil,
     include_directories : inc_util,
     install : true,
@@ -87,7 +87,7 @@ endforeach
 executable(
   'glxinfo',
   ['glxinfo.c', 'glinfo_common.c', 'glinfo_common.h'],
-  dependencies : [dep_x11, dep_gl],
+  dependencies : [dep_x11, dep_epoxy],
   include_directories : inc_util,
   install : true,
 )
@@ -95,7 +95,7 @@ executable(
 executable(
   'xrotfontdemo',
   ['xrotfontdemo.c', 'xuserotfont.c', 'xuserotfont.h'],
-  dependencies : [dep_x11, dep_gl],
+  dependencies : [dep_x11, dep_epoxy],
   include_directories : inc_util,
   install : true,
 )

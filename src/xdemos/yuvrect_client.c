@@ -12,7 +12,7 @@
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
 #define GL_GLEXT_PROTOTYPES
-#include <GL/glx.h>
+#include <epoxy/glx.h>
 
 #include "../util/readtex.c"   /* I know, this is a hack. */
 

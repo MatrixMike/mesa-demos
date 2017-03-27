@@ -21,12 +21,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
-#if USE_FULL_GL
-#include "gl_wrap.h"  /* use full OpenGL */
-#else
-#include <GLES2/gl2.h>  /* use OpenGL ES 2.x */
-#endif
-#include <EGL/egl.h>
+#include <epoxy/gl.h>
+#include <epoxy/egl.h>
 
 
 #define FLOAT_TO_FIXED(X)   ((X) * 65535.0)

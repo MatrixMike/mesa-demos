@@ -49,8 +49,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <GL/gl.h>
-#include <GL/glx.h>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
 #include <GL/glxext.h>
 #include <X11/X.h>
 #include <X11/Xlib.h>

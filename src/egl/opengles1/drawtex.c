@@ -14,9 +14,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <GLES/gl.h>
-#include <GLES/glext.h>
-#include <EGL/egl.h>
+#include <epoxy/gl.h>
+#include <epoxy/egl.h>
 
 #include "eglut.h"
 

@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #define DEPTH 5.0f
@@ -116,7 +116,7 @@ SetFogMode(GLint fogMode)
 static GLboolean
 SetFogCoord(GLboolean fogCoord)
 {
-   if (!GLEW_EXT_fog_coord) {
+   if (!GL_EXT_fog_coord) {
       return GL_FALSE;
    }
 
@@ -365,7 +365,7 @@ Init(void)
 
    printf("GL_RENDERER = %s\n", (char *) glGetString(GL_RENDERER));
 
-   if (!GLEW_EXT_fog_coord) {
+   if (!GL_EXT_fog_coord) {
       printf("GL_EXT_fog_coord not supported!\n");
    }
 
@@ -392,7 +392,7 @@ Init(void)
    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
    glTexCoordPointer(2, GL_FLOAT, 0, texcoord_pointer);
 
-   if (GLEW_EXT_fog_coord) {
+   if (GL_EXT_fog_coord) {
       glEnableClientState(GL_FOG_COORDINATE_ARRAY_EXT);
       glFogCoordPointerEXT(GL_FLOAT, 0, fogcoord_pointer);
    }
@@ -408,7 +408,6 @@ main( int argc, char *argv[] )
    glutInit( &argc, argv );
    glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
    glutCreateWindow(argv[0]);
-   glewInit();
    glutReshapeFunc( Reshape );
    glutKeyboardFunc( Key );
    glutDisplayFunc( Display );

@@ -6,7 +6,7 @@
  */
 #include <windows.h>
 #include <assert.h>
-#include <GL/gl.h>
+#include <epoxy/gl.h>
 #include "wglutil.h"
 
 #define STYLE			WS_OVERLAPPEDWINDOW

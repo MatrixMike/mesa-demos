@@ -13,7 +13,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <GLES/gl.h>
+#include <epoxy/gl.h>
 
 #include "eglut.h"
 

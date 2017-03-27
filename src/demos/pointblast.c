@@ -18,7 +18,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 /* Some <math.h> files do not define M_PI... */
@@ -444,7 +444,6 @@ main(int argc, char **argv)
   }
 
   glutCreateWindow("point burst");
-  glewInit();
   glutDisplayFunc(redraw);
   glutMouseFunc(mouse);
   glutMotionFunc(mouseMotion);

@@ -32,8 +32,8 @@
 
 #define GL_GLEXT_PROTOTYPES
 #define GLX_GLXEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glx.h>
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
 #include <X11/keysym.h>
 #include <stdio.h>
 #include <stdlib.h>

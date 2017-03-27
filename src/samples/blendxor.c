@@ -10,7 +10,7 @@
 #include <unistd.h>
 #endif
 #include <stdlib.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 
@@ -171,7 +171,7 @@ int main(int argc, char **argv)
 	exit(1);
     }
 
-    glewInit();
+    
 
     /* Make sure blend_logic_op extension is there. */
     s = (char *) glGetString(GL_EXTENSIONS);

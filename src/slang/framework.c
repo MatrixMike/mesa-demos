@@ -19,7 +19,7 @@ void InitFramework (int *argc, char *argv[])
    glutInitWindowSize (200, 200);
    glutInitDisplayMode (GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
    glutCreateWindow (argv[0]);
-   glewInit();
+   
 
    printf ("VENDOR: %s\n", glGetString (GL_VENDOR));
    printf ("RENDERER: %s\n", glGetString (GL_RENDERER));

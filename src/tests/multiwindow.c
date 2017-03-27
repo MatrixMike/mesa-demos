@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 
@@ -146,7 +146,7 @@ int main( int argc, char *argv[] )
    glutInitWindowSize( 400, 400 );
    glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
    Window[0] = glutCreateWindow(argv[0]);
-   glewInit();
+   
    glutReshapeFunc( Reshape );
    glutKeyboardFunc( Key );
    glutDisplayFunc( Display0 );
@@ -157,7 +157,7 @@ int main( int argc, char *argv[] )
    glutInitWindowSize( 400, 400 );
    glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
    Window[1] = glutCreateWindow(argv[0]);
-   glewInit();
+   
    glutReshapeFunc( Reshape );
    glutKeyboardFunc( Key );
    glutDisplayFunc( Display1 );

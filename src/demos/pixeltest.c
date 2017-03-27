@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <GL/glew.h> /* for GL_UNSIGNED_SHORT_5_6_5 */
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 

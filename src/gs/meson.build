@@ -18,5 +18,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-executable('gs-tri', 'gs-tri.c', dependencies : [dep_glut, dep_gl, dep_glu, dep_glew],
-           include_directories : inc_util)
+executable(
+  'gs-tri',
+  'gs-tri.c',
+  dependencies : [dep_glut, dep_glu, dep_epoxy],
+  include_directories : inc_util,
+)

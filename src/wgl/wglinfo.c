@@ -33,7 +33,7 @@
 
 #include <windows.h>
 
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include <GL/wglew.h>
 #include <assert.h>
 #include <stdio.h>

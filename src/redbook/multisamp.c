@@ -53,7 +53,7 @@
  *  background.  Antialiasing is sometimes easier to see
  *  when objects are rendered over a contrasting background.
  */
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include <stdlib.h>
 #include <stdio.h>

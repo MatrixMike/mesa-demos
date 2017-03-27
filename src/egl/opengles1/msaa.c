@@ -36,13 +36,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
-#if USE_FULL_GL
-#include "gl_wrap.h"  /* use full OpenGL */
-#else
-#include <GLES/gl.h>  /* use OpenGL ES 1.x */
-#include <GLES/glext.h>
-#endif
-#include <EGL/egl.h>
+#include <epoxy/gl.h>
+#include <epoxy/egl.h>
 
 
 

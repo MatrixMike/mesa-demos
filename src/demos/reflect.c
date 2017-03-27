@@ -31,6 +31,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include "showbuffer.h"
 #include "readtex.h"

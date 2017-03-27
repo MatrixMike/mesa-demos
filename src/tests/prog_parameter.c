@@ -35,7 +35,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 
 #ifndef GL_EXT_gpu_program_parameters
@@ -196,7 +196,7 @@ static void Init( void )
    printf("GL_RENDERER = %s\n", (char *) glGetString(GL_RENDERER));
    printf("GL_VERSION = %s\n\n", ver_string);
 
-   if ( !GLEW_ARB_vertex_program ) {
+   if ( !epoxy_has_gl_extension("GL_ARB_vertex_program") ) {
       printf("Sorry, this program requires GL_ARB_vertex_program\n");
       exit(2);
    }
@@ -208,7 +208,7 @@ static void Init( void )
    get_program_local_parameterfv = glGetProgramLocalParameterfvARB;
    get_program_env_parameterfv = glGetProgramEnvParameterfvARB;
 
-   if ( GLEW_EXT_gpu_program_parameters ) {
+   if ( epoxy_has_gl_extension("GL_EXT_gpu_program_parameters") ) {
       printf("GL_EXT_gpu_program_parameters available, testing that path.\n");
 
       program_local_parameters4fv = glProgramLocalParameters4fvEXT;
@@ -275,7 +275,7 @@ int main( int argc, char *argv[] )
    glutInitWindowSize( Width, Height );
    glutInitDisplayMode( GLUT_RGB );
    glutCreateWindow( "Program Parameters Test" );
-   glewInit();
+   
    glutReshapeFunc( Reshape );
    glutKeyboardFunc( Key );
    glutDisplayFunc( Display );

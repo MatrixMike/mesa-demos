@@ -28,6 +28,7 @@
 #include <assert.h>
 #include <math.h>
 #include <stdlib.h>
+#include <epoxy/gl.h>
 #include "glut_wrap.h"
 #include <string.h>
 #include <stdio.h>
