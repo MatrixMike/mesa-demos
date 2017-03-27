@@ -58,9 +58,9 @@ executables = [
   'vsraytrace',
 ]
 foreach e : executables
-  executable(e, e + '.c', dependencies : [dep_util, dep_m], install : true)
+  executable(e, e + '.c', dependencies : [dep_epoxy, dep_util, dep_m], install : true)
 endforeach
 
 executable('samplers_array', 'samplers.c', c_args : '-DSAMPLERS_ARRAY',
            dependencies : dep_util, install : true)
-executable('gsraytrace', 'gsraytrace.cpp', dependencies : dep_util, install :true)
+executable('gsraytrace', 'gsraytrace.cpp', dependencies : [dep_epoxy, dep_util], install :true)

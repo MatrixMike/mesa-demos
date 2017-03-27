@@ -21,6 +21,7 @@
 libperf = static_library(
   'perf',
   ['common.c', 'common.h', 'glmain.c', 'glmain.h'],
+  dependencies : dep_epoxy,
   include_directories : inc_util,
 )
 

@@ -26,7 +26,6 @@ cc = meson.get_compiler('c')
 require_native = (host_system != 'windows' and host_system != 'darwin')
 
 dep_egl = []
-dep_epoxy = dependency('epoxy')
 dep_gl = []
 dep_gles1 = []
 dep_gles2 = []
@@ -42,9 +41,12 @@ if dep_glut.found()
   add_project_arguments('-DHAVE_FREEGLUT', language : 'c')
   add_project_arguments('-DHAVE_FREEGLUT', language : 'cpp')
 else
-  dep_glut = cc.find_library('glut', required : true)
+  dep_glut = cc.find_library('glut')
+  if cc.has_header('GL/freeglut.h')
+    add_project_arguments('-DHAVE_FREEGLUT', language : 'c')
+    add_project_arguments('-DHAVE_FREEGLUT', language : 'cpp')
+  endif
 endif
-
 
 if host_system == 'windows'
   dep_gl = cc.find_library('opengl32')
@@ -151,10 +153,6 @@ if get_option('with-freetype2') != 'no'
   with_freetype2 = dep_freetype2.found()
 endif
 
-# TODO: Make this configurable
-add_project_arguments('-DDEMOS_DATA_DIR="../data/"', language: 'c')
-add_project_arguments('-DDEMOS_DATA_DIR="../data/"', language: 'cpp')
-
 if cc.get_id() == 'msvc'
   # TODO:
 else
@@ -177,5 +175,16 @@ foreach f : potential_c_flags
     add_project_arguments(f, language : 'c')
   endif
 endforeach
+
+# TODO: Make this configurable
+add_project_arguments('-DDEMOS_DATA_DIR="../data/"', language: 'c')
+add_project_arguments('-DDEMOS_DATA_DIR="../data/"', language: 'cpp')
+
+# subprojects are targets, they must be set after project arguments
+dep_epoxy = dependency('epoxy', required : require_native)
+if not dep_epoxy.found()
+  epoxy = subproject('epoxy')
+  dep_epoxy = epoxy.get_variable('libepoxy_dep')
+endif
 
 subdir('src')

@@ -26,9 +26,6 @@ root = '/usr/i686-w64-mingw32'
 c_args = []
 c_link_args = []
 
-glew_include_dir = 'glew/glew-2.0.0/include'
-glew_library = '/home/dylan/source/mesa-demos/glew/glew-2.0.0/bin/Release/Win32/'
-
 [host_machine]
 system = 'windows'
 cpu_family = 'x86'
