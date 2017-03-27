@@ -130,7 +130,9 @@ endif
 if get_option('with-x11') != 'no'
   dep_x11 = dependency('x11', required : get_option('with-x11') == 'yes')
   with_x11 = dep_x11.found()
-  dep_xext = dependency('xext')
+  if dep_x11.found()
+    dep_xext = dependency('xext')
+  endif
 endif
 if get_option('with-wayland') != 'no'
   dep_wayland += dependency('wayland-client', required : get_option('with-wayland') == 'yes')
