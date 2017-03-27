@@ -35,12 +35,13 @@ files_libutil = [
 libutil = static_library(
   'util',
   files_libutil,
-  dependencies : [dep_gl, dep_glu, dep_epoxy, dep_glut],
+  dependencies : [dep_glu, dep_epoxy, dep_glut],
 )
 
 inc_util = include_directories('.')
 
 dep_util = declare_dependency(
   link_with : libutil,
+  dependencies : [dep_epoxy, dep_glu, dep_glut],
   include_directories : inc_util,
 )
