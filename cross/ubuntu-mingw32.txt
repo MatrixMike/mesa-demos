@@ -3,9 +3,10 @@ c = 'i686-w64-mingw32-gcc'
 cpp = 'i686-w64-mingw32-g++'
 ar = 'i686-w64-mingw32-ar'
 strip = 'i686-w64-mingw32-strip'
-
-# XXX: We don't want to rely on pkgconfig for Windows
-#pkgconfig = '...'
+# We don't want to rely on pkgconfig for Windows, but meson exepcts something,
+# false will satisfy meson that it's querying something, but also never return a
+# value it will try to cache
+pkgconfig = 'false'
 
 # XXX: We don't want to rely on WINE
 #exe_wrapper = 'wine' # A command used to run generated executables.
@@ -25,8 +26,13 @@ root = '/usr/i686-w64-mingw32'
 c_args = []
 c_link_args = []
 
+glew_include_dir = 'glew/glew-2.0.0/include'
+glew_library = '/home/dylan/source/mesa-demos/glew/glew-2.0.0/bin/Release/Win32/'
+
 [host_machine]
 system = 'windows'
 cpu_family = 'x86'
 cpu = 'i686'
 endian = 'little'
+
+# vim: ft=dosini

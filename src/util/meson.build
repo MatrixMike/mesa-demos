@@ -42,5 +42,5 @@ inc_util = include_directories('.')
 
 dep_util = declare_dependency(
   link_with : libutil,
-  include_directories : inc_util
+  include_directories : inc_util,
 )

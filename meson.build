@@ -23,11 +23,12 @@ project('mesa-demos', ['c', 'cpp'], license : 'MIT', version : '8.3.0')
 host_system = host_machine.system()
 cc = meson.get_compiler('c')
 
+require_native = (host_system != 'windows' and host_system != 'darwin')
+
 dep_egl = []
 dep_gl = []
 dep_gles1 = []
 dep_gles2 = []
-dep_glew = dependency('glew', version : '>=1.5.4')
 dep_glu = []
 dep_m = []
 dep_osmesa = []
@@ -43,12 +44,23 @@ else
   dep_glut = cc.find_library('glut', required : true)
 endif
 
+
 if host_system == 'windows'
   dep_gl = cc.find_library('opengl32')
   dep_glu = cc.find_library('glu32')
 else
   dep_gl = dependency('gl')
   dep_glu = dependency('glu')
+endif
+dep_glew = dependency('glew', version : '>=1.5.4', required : require_native)
+if not dep_glew.found()
+  if meson.is_cross_build()
+    _dep_glew = cc.find_library('glew32', dirs : meson.get_cross_property('glew_library'))
+    dep_glew = declare_dependency(
+      dependencies : [dep_glew, dep_gl],
+      include_directories : include_directories(meson.get_cross_property('glew_include_dir'))
+    )
+  endif
 endif
 
 if host_system.startswith('linux')
