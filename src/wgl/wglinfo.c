@@ -34,7 +34,7 @@
 #include <windows.h>
 
 #include <epoxy/gl.h>
-#include <GL/wglew.h>
+#include <epoxy/wgl.h>
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>

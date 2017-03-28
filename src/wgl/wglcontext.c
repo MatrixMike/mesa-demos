@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <epoxy/gl.h>
-#include <GL/wglew.h>
+#include <epoxy/wgl.h>
 
 static LRESULT CALLBACK
 WndProc(HWND hWnd,

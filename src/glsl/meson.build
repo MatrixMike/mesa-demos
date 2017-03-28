@@ -58,7 +58,7 @@ executables = [
   'vsraytrace',
 ]
 foreach e : executables
-  executable(e, e + '.c', dependencies : [dep_epoxy, dep_util, dep_m], install : true)
+  executable(e, e + '.c', dependencies : [dep_util, dep_epoxy, dep_m], install : true)
 endforeach
 
 executable('samplers_array', 'samplers.c', c_args : '-DSAMPLERS_ARRAY',

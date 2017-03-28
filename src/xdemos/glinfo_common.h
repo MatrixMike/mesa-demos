@@ -28,13 +28,7 @@
 #define GLINFO_COMMON_H
 
 
-#ifdef _WIN32
-/* GL/glext.h is not commonly available on Windows. */
 #include <epoxy/gl.h>
-#else
-#include <epoxy/gl.h>
-#include <GL/glext.h>
-#endif
 
 typedef void (APIENTRY * GETPROGRAMIVARBPROC) (GLenum target, GLenum pname, GLint *params);
 typedef const GLubyte *(APIENTRY * GETSTRINGIPROC) (GLenum name, GLuint index);

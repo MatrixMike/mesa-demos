@@ -20,10 +20,8 @@
 
 executables = [
   'wglthreads',
-  'shared_mt',
-  'wglinfo',
+  'sharedtex_mt',
   'wglcontext',
-  'wincopy',
   'wglfont',
 ]
 foreach e : executables
@@ -31,9 +29,22 @@ foreach e : executables
     e,
     e + '.c',
     dependencies : dep_epoxy,
-    include_directories : include_directories('../xdemos'),
-    install : true
+    install : true,
   )
 endforeach
 
-subdir('rtotex')
+executable(
+  'wglinfo',
+  ['wglinfo.c', '../xdemos/glinfo_common.c'],
+  dependencies : dep_epoxy,
+  include_directories : include_directories('../xdemos'),
+  install : true,
+)
+executable(
+  'wincopy',
+  ['wincopy.c', 'wglutil.c'],
+  dependencies : dep_epoxy,
+  install : true,
+)
+
+# TODO: subdir('rtotex')

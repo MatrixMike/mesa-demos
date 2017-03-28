@@ -152,29 +152,31 @@ executables = [
   'sharedtex',
   'texobjshare',
 ]
-foreach e : executables
-  executable(
-    'test_' + e, e + '.c',
-    dependencies : [dep_glut, dep_epoxy, dep_glu, dep_x11, dep_m],
-    include_directories : inc_util,
-  )
-endforeach
+if with_x11
+  foreach e : executables
+    executable(
+      'test_' + e, e + '.c',
+      dependencies : [dep_glut, dep_epoxy, dep_glu, dep_x11, dep_m],
+      include_directories : inc_util,
+    )
+  endforeach
 
-if with_mesa_source
-  getproclist_h = custom_target(
-    'getproclist_h',
-    input : ['getprocaddress.py', join_paths(mesa_source, 'src/mapi/glapi/gen'),
-             'getprocaddress.c'],
-    output : ['getproclist.h'],
-    command : [prog_python, '@INPUT0@', '@INPUT1@', '@INPUT2@'],
-    capture : true,
-    depend_files : join_paths(mesa_source, 'src/mapi/glapi/gen/gl_API.xml')
-  )
+  if with_mesa_source
+    getproclist_h = custom_target(
+      'getproclist_h',
+      input : ['getprocaddress.py', join_paths(mesa_source, 'src/mapi/glapi/gen'),
+               'getprocaddress.c'],
+      output : ['getproclist.h'],
+      command : [prog_python, '@INPUT0@', '@INPUT1@', '@INPUT2@'],
+      capture : true,
+      depend_files : join_paths(mesa_source, 'src/mapi/glapi/gen/gl_API.xml')
+    )
 
-  executable(
-    'getproclist',
-    ['getprocaddress.c', getproclist_h],
-    dependencies : [dep_glut, dep_epoxy, dep_glu, dep_x11, dep_m],
-    include_directories : inc_util,
-  )
+    executable(
+      'getproclist',
+      ['getprocaddress.c', getproclist_h],
+      dependencies : [dep_glut, dep_epoxy, dep_glu, dep_x11, dep_m],
+      include_directories : inc_util,
+    )
+  endif
 endif

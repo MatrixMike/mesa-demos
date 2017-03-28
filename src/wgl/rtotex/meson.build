@@ -24,7 +24,7 @@ executable(
    'pbuffer.cpp', 'timer.cpp', 'windows.cpp', 'maths/matrix4x4.cpp',
    'maths/plane.cpp', 'maths/vector2d.cpp', 'maths/vector3d.cpp',
    'mats/vector4d.cpp'],
-  dependencies : [dep_gl, dep_glut, dep_glew, dep_glu],
+  dependencies : [dep_epoxy, dep_glut, dep_glu],
 )
 
-# TODO: isntall data files
+# TODO: install data files

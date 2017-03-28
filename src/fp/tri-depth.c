@@ -6,7 +6,6 @@
 #include "glut_wrap.h"
 
 
-
 static void Init( void )
 {
    /* scale of 10.0 gives me a visible result on nv hardware.

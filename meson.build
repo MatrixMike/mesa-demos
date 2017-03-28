@@ -22,6 +22,10 @@ project('mesa-demos', ['c', 'cpp'], license : 'MIT', version : '8.3.0')
 
 host_system = host_machine.system()
 cc = meson.get_compiler('c')
+# Meson uses 'cpp' for C++, rather than using both cpp and cxx just stick with
+# meson's naming scheme, even though many associate 'cpp' with 'C
+# PreProcessor', not C++
+cpp = meson.get_compiler('cpp')
 
 require_native = (host_system != 'windows' and host_system != 'darwin')
 
@@ -42,7 +46,7 @@ if dep_glut.found()
   add_project_arguments('-DHAVE_FREEGLUT', language : 'cpp')
 else
   dep_glut = cc.find_library('glut')
-  if cc.has_header('GL/freeglut.h')
+  if cc.has_function('glutInitContextProfile', args : ['GL/glut.h', 'GL/freeglut.h'])
     add_project_arguments('-DHAVE_FREEGLUT', language : 'c')
     add_project_arguments('-DHAVE_FREEGLUT', language : 'cpp')
   endif
@@ -79,21 +83,55 @@ elif host_system.startswith('cygwin')
   dep_thread = dependency('threads')
   dep_xll = dependency('x11')
 elif host_system == 'windows'
-  # TODO
+  # Nobody likes to include windows.h:
+  # - Microsoft's GL/gl.h header depends on windows.h but doesn't include it;
+  # - GLEW temporarily defines the necessary defines but undefines them later
+  # - certain GLUT distributions don't include it;
+  # - most of our programs are meant to be portable so don't include it.
+  #
+  # We could try to replicate the windows.h definitions required by GL/gl.h,
+  # but the build time savings don't compensate the constant headaches that
+  # brings, so instead we force windows.h to be included on every file.
+  if cc.get_id() == 'msvc'
+    # TODO
+  else  # MinGw
+    add_project_arguments('--include', 'windows.h', language : 'c')
+    add_project_arguments('--include', 'windows.h', language : 'cpp')
+
+    if cc.has_argument('-static-libgcc')
+      add_project_link_arguments('-static-libgcc', language : 'c')
+    endif
+    if cc.has_argument('-static-libstdc++')
+      add_project_link_arguments('-static-libstdc++', language : 'cpp')
+    endif
+
+    # XXX: this probably isn't right, but it gets things building
+    add_project_arguments('-DGLUT_DISABLE_ATEXIT_HACK', language : 'c')
+    add_project_arguments('-DGLUT_DISABLE_ATEXIT_HACK', language : 'cpp')
+  endif
+  
+  # Don't define min/max macros
+  add_project_arguments('-DNOMINMAX', language : 'c')
+  add_project_arguments('-DNOMINMAX', language : 'cpp')
+
+  # MSVC and MinGW only define and use APIENTRY
+  add_project_arguments('-DGLAPIENTRY=__stdcall', language : 'c')
+  add_project_arguments('-DGLAPIENTRY=__stdcall', language : 'cpp')
 endif
 
 with_egl = false
+with_freetype2 = false
+with_gbm = false
 with_gles1 = false
 with_gles2 = false
-with_vg = false
-with_osmesa = false
 with_libdrm = false
-with_x11 = false
-with_wayland = false
-with_gbm = false
-with_freetype2 = false
-with_rbug = get_option('with-rbug')
 with_mesa_source = get_option('mesa-sourcedir') != 'none'
+with_osmesa = false
+with_rbug = get_option('with-rbug')
+with_vg = false
+with_wayland = false
+with_wgl = false
+with_x11 = false
 if with_rbug
   if not with_mesa_source
     error('rbug requires mesa source')
@@ -108,8 +146,10 @@ if get_option('with-egl') != 'no'
   with_egl = dep_egl.found()
 endif
 if get_option('with-wgl') != 'no'
-  dep_wgl = dependency('wgl', required : get_option('with-wgl') == 'yes')
-  with_wgl = dep_wgl.found()
+  with_wgl = (host_system == 'windows')
+  if not with_wgl and get_option('with-wgl') == 'yes'
+    error('WGL only support when targeting Windows')
+  endif
 endif
 if get_option('with-gles1') != 'no'
   dep_gles1 = dependency('glesv1_cm', required : get_option('with-gles1') == 'yes')
