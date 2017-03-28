@@ -36,7 +36,6 @@ libutil = static_library(
   'util',
   files_libutil,
   dependencies : [dep_glu, dep_epoxy, dep_glut],
-  sources : epoxy.get_variable('epoxy_headers'),
 )
 
 inc_util = include_directories('.')
