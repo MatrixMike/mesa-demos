@@ -1,0 +1,6 @@
+[wrap-git]
+directory = epoxy
+url = https://github.com/anholt/libepoxy
+revision = 3289910b9747c24aedd98f68c3bb2c1ddb27f119
+
+# vim: ft=dosini
