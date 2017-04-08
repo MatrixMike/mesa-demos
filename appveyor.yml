@@ -46,9 +46,9 @@ matrix:
 
 install:
 # Check pip
-- pip3 --version
+- py -3 -m pip --version
 # Install Mako
-- pip3 install meson
+- py -3 -m pip install meson
 # Install Ninja
 - cinst -y ninja
 - ninja --version
