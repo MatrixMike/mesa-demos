@@ -103,7 +103,8 @@ elif host_system == 'windows'
   # but the build time savings don't compensate the constant headaches that
   # brings, so instead we force windows.h to be included on every file.
   if cc.get_id() == 'msvc'
-    # TODO
+    add_project_arguments('-Fiwindows.h', language : 'c')
+    add_project_arguments('-Fiwindows.h', language : 'cpp')
   else  # MinGw
     add_project_arguments('--include', 'windows.h', language : 'c')
     add_project_arguments('--include', 'windows.h', language : 'cpp')
@@ -212,6 +213,9 @@ add_project_arguments('-DDEMOS_DATA_DIR="../data/"', language: 'cpp')
 
 if cc.get_id() == 'msvc'
   # TODO:
+  potential_c_flags = [
+     '-wd4244', # conversion' conversion from 'type1' to 'type2', possible loss of data
+  ]
 else
   potential_c_flags = [
     '-Wall',
