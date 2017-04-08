@@ -37,18 +37,21 @@ clone_depth: 100
 os: Visual Studio 2015
 
 environment:
+  PYTHON_HOME: C:\Python36
   matrix:
-  - ARCH: "x86"
-  - ARCH: "x86_amd64"
+  - ARCH: x86
+  - ARCH: x86_amd64
 
 matrix:
   fast_finish: true
 
 install:
-# Check pip
-- py -3 -m pip --version
+# Setup Python 3
+- set PATH=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%PATH%
+- pip --version
 # Install Mako
-- py -3 -m pip install meson
+- pip install meson
+- meson --version
 # Install Ninja
 - cinst -y ninja
 - ninja --version
