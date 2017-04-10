@@ -60,7 +60,7 @@ install:
 # Setup MinGW
 - if not "%MINGW_HOME%"=="" set Path=%MINGW_HOME%\bin;%Path%
 # Setup MSVC
-- if not "%MSVC_ARCH%"=="" set call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" %MSVC_ARCH%
+- if not "%MSVC_ARCH%"=="" call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" %MSVC_ARCH%
 
 build_script:
 - meson . build
