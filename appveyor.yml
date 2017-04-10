@@ -39,8 +39,8 @@ os: Visual Studio 2015
 environment:
   PYTHON_HOME: C:\Python36
   matrix:
-  - MINGW_HOME: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1
-  - MINGW_HOME: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
+  - MINGW_HOME: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32
+  - MINGW_HOME: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64
   - MSVC_ARCH: x86
   - MSVC_ARCH: x86_amd64
 
@@ -48,8 +48,6 @@ matrix:
   fast_finish: true
 
 install:
-# Debug Path problems
-- echo Path=%Path%
 # Setup Python 3
 - set Path=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%Path%
 - pip --version
