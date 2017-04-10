@@ -48,6 +48,8 @@ matrix:
   fast_finish: true
 
 install:
+# Debug Path problems
+- echo Path=%Path%
 # Setup Python 3
 - set Path=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%Path%
 - pip --version
