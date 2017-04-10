@@ -52,7 +52,7 @@ install:
 - set Path=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%Path%
 - pip --version
 # Install Mako
-- pip install meson
+- pip install git+https://github.com/mesonbuild/meson.git
 - meson --version
 # Install Ninja
 - cinst -y ninja
