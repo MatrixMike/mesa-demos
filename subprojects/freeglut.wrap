@@ -7,6 +7,6 @@ source_hash = 2a43be8515b01ea82bcfa17d29ae0d40bd128342f0930cd1f375f1ff999f76a2
 
 patch_url = https://people.freedesktop.org/~dbaker/wraps/freeglut-3.0.0-patch.tar.gz
 patch_filename = freeglut-3.0.0-patch.tar.gz
-patch_hash = 3a22d7a0ff836ae4595caa4a43ae167f3f3948f2a6e6cd8dd59df50849aae9e7
+patch_hash = 5daaf886c9599ca6d985f546035b86db3983921c797aefa760bc2374e7cd2dc0
 
 # vim: ft=dosini
