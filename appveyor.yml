@@ -39,15 +39,17 @@ os: Visual Studio 2015
 environment:
   PYTHON_HOME: C:\Python36
   matrix:
-  - ARCH: x86
-  - ARCH: x86_amd64
+  - MINGW_HOME: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1
+  - MINGW_HOME: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
+  - MSVC_ARCH: x86
+  - MSVC_ARCH: x86_amd64
 
 matrix:
   fast_finish: true
 
 install:
 # Setup Python 3
-- set PATH=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%PATH%
+- set Path=%PYTHON_HOME%;%PYTHON_HOME%\Scripts;%Path%
 - pip --version
 # Install Mako
 - pip install meson
@@ -55,9 +57,12 @@ install:
 # Install Ninja
 - cinst -y ninja
 - ninja --version
+# Setup MinGW
+- if not "%MINGW_HOME%"=="" set Path=%MINGW_HOME%\bin;%Path%
+# Setup MSVC
+- if not "%MSVC_ARCH%"=="" set call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" %MSVC_ARCH%
 
 build_script:
-- call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" %ARCH%
 - meson . build
 - ninja -C build
 
