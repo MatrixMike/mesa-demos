@@ -220,7 +220,6 @@ else
   potential_c_flags = [
     '-Wall',
     '-Wpointer-arith',
-    '-Wstrict-prototypes',
     '-Wmissing-prototypes',
     '-Wmissing-declarations',
     '-Wnested-externs',
@@ -229,6 +228,12 @@ else
     '-Wold-style-definition',
     '-Wdeclaration-after-statement',
   ]
+  if host_system != 'windows'
+    # GLEW/FreeGLut headers throw up lots of these
+    potential_c_flags += [
+      '-Wstrict-prototypes',
+    ]
+  endif
 endif
 
 foreach f : potential_c_flags
