@@ -40,15 +40,10 @@
  */
 #include <stdlib.h>
 #include "glut_wrap.h"
-#define sizeData  6 
-GLfloat ctrlpoints[sizeData][3] = {
-	{ -4.0, -4.5, 0.0}, 
-	{ -2.0, 4.0, 0.0}, // was -4.0, -4.0
-	{0.0, -4.0, 0.0},
-	{4.0, 4.0, 0.0},
-	{1.0, -4.0, 0.0},
-	{3.0, -4.0, 0.0}
-	 };
+
+GLfloat ctrlpoints[4][3] = {
+	{ -4.0, -4.0, 0.0}, { -2.0, 4.0, 0.0}, 
+	{2.0, -4.0, 0.0}, {4.0, 4.0, 0.0}};
 
 static void init(void)
 {
@@ -72,7 +67,7 @@ static void display(void)
    glPointSize(5.0);
    glColor3f(1.0, 1.0, 0.0);
    glBegin(GL_POINTS);
-      for (i = 0; i < sizeData; i++) 
+      for (i = 0; i < 4; i++) 
          glVertex3fv(&ctrlpoints[i][0]);
    glEnd();
    glFlush();
