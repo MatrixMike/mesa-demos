@@ -3,4 +3,5 @@ No package 'glew' found
 
 get glew from https://sourceforge.net/projects/glew/files/latest/download?source=typ_redirect
 
+Aim of this project : to reconstruct Android GO environment which used GL
 
